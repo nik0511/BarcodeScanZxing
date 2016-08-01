@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">BarcodeScanZxing</string>
+    <string name="Scan_qr">Scan QR Code</string>
+    <string name="Scan_info">Information</string>
+    <string name="add_data">Add To Database</string>
+    <string name="show_data">Show Database</string>
 </resources>
