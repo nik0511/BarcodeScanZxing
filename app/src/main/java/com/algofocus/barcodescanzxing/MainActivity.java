@@ -13,6 +13,8 @@ import com.algofocus.barcodescanzxing.database.DatabaseHandler;
 import com.algofocus.barcodescanzxing.database.DatabaseViewer;
 import com.algofocus.barcodescanzxing.database.QReader;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button scanQr;
@@ -65,8 +67,9 @@ public class MainActivity extends AppCompatActivity {
         if(requestCode==0){
             if(resultCode== RESULT_OK){
                 textViewInfo = (TextView) findViewById(R.id.scan_info);
-                textViewInfo.setText(data.getDataString());
-                //qr_info = data.getStringExtra()
+               // textViewInfo.setText(data.getDataString());
+                qr_info = data.getStringExtra("SCAN_RESULT");
+                textViewInfo.setText(qr_info);
 
             }
         }
@@ -76,7 +79,12 @@ public class MainActivity extends AppCompatActivity {
 
         DatabaseHandler db  = new DatabaseHandler(this);
         db.addData(new QReader(id,qr_info));
-        id++;
+        Random random = new Random();
+        id = random.nextInt(100000);
+        /*Toast toast = new Toast(getApplicationContext());
+        toast.makeText(this,"Added",Toast.LENGTH_LONG);
+        toast.show();*/
+        Toast.makeText(this,"added",Toast.LENGTH_LONG).show();
 
 
     }

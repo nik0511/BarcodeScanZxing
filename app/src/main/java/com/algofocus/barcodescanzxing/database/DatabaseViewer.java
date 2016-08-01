@@ -2,6 +2,7 @@ package com.algofocus.barcodescanzxing.database;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -18,10 +19,11 @@ public class DatabaseViewer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_database_viewer);
         DatabaseHandler db = new DatabaseHandler(this);
-        List<String> list;
+        List<String> list = new ArrayList<String>();
         list = db.showData();
+        ArrayAdapter<String> ad = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,list);
         ListView listView = (ListView) findViewById(R.id.listView);
-        listView.setAdapter((ListAdapter) list);
+        listView.setAdapter(ad);
 
     }
 }
